@@ -593,7 +593,7 @@ const Content2Img = styled.img<{ istrue: boolean }>`
     height: ${props => (props.istrue ? 'auto' : '50px')};
   }
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 760px) {
     top: ${props => (props.istrue ? '15%' : '0')};
     left: ${props => (props.istrue ? '8%' : '0')};
     height: ${props => (props.istrue ? '26px' : '56px')};
@@ -614,7 +614,7 @@ const Content2Title = styled.div<{ istrue: boolean }>`
     letter-spacing: ${props => (props.istrue ? '' : '-1px')};
   }
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 760px) {
     margin-left: ${props => (props.istrue ? '70px' : '0')};
     font-size: ${props => (props.istrue ? '18px' : '14px')};
     width: ${props => (props.istrue ? '100%' : '80%')};

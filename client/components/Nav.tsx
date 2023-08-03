@@ -1,9 +1,7 @@
 import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 import { useState } from 'react';
-import React, { FunctionComponent } from 'react';
-
-const Nav: FunctionComponent = () => {
+const Nav = () => {
   const router = useRouter();
   const [IsMenuOpen, setIsMenuOpen] = useState(false);
   const [IsIntroduce, setIsIntroduce] = useState(false);
@@ -41,7 +39,7 @@ const Nav: FunctionComponent = () => {
   return (
     <Wrap>
       <Box>
-        <Logo src='/image/logo.png' />
+        <Logo src='/image/logo.png' onClick={() => router.push('/')} />
         <TitleWrap ismenuopen={IsMenuOpen}>
           <TitleBox>
             <Title onClick={() => isIntroduceToggle()}>
@@ -52,11 +50,11 @@ const Nav: FunctionComponent = () => {
               />
             </Title>
             <SubTitleBox width='170px' ismenuopen={IsIntroduce}>
-              <SubTitle>
+              <SubTitle onClick={() => router.push('/greetings')}>
                 <SubTitleImg src='/image/nav-introduce1.png' />
                 인사말
               </SubTitle>
-              <SubTitle>
+              <SubTitle onClick={() => router.push('/members')}>
                 <SubTitleImg src='/image/nav-introduce2.png' />
                 구성원 소개
               </SubTitle>
@@ -126,6 +124,10 @@ const Wrap = styled.div`
   height: 70px;
   border-bottom: 1px solid #e2e2e2;
   z-index: 100;
+
+  @media screen and (max-width: 760px) {
+    height: 60px;
+  }
 `;
 
 const Box = styled.div`
@@ -145,10 +147,13 @@ const Box = styled.div`
   @media screen and (max-width: 760px) {
     width: 350px;
     grid-template-columns: 40% 8%;
+    height: 60px;
   }
 `;
 
 const Logo = styled.img`
+  cursor: pointer;
+
   @media screen and (max-width: 760px) {
     width: 130px;
   }
