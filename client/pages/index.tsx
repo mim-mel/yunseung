@@ -799,6 +799,7 @@ const Content3Button = styled.div`
   position: relative;
   top: 0;
   transition: 0.2s;
+  margin: 0 auto;
 
   img {
     margin-left: 8px;

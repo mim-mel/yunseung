@@ -58,7 +58,7 @@ const Nav = () => {
                 <SubTitleImg src='/image/nav-introduce2.png' />
                 구성원 소개
               </SubTitle>
-              <SubTitle>
+              <SubTitle onClick={() => router.push('/history')}>
                 <SubTitleImg src='/image/nav-introduce3.png' />
                 연혁
               </SubTitle>

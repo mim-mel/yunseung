@@ -48,7 +48,7 @@ interface Props {
 
 const Wrap = styled.div`
   width: 1420px;
-  margin: 160px auto 100px auto;
+  margin: 220px auto 100px auto;
 
   @media screen and (max-width: 1024px) {
     width: 700px;
@@ -57,7 +57,7 @@ const Wrap = styled.div`
 
   @media screen and (max-width: 760px) {
     width: 350px;
-    margin: 140px auto 80px auto;
+    margin: 130px auto 100px auto;
   }
 `;
 
