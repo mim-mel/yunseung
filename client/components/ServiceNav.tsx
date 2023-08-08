@@ -128,6 +128,7 @@ const Category = styled.div`
   line-height: 22px;
   text-align: center;
   cursor: pointer;
+  letter-spacing: -0.5px;
 
   &.active {
     border: 1px solid #066f68;

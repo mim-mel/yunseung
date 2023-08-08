@@ -86,30 +86,37 @@ interface Props {
   IpadHeight?: string;
 }
 
-const Wrap = styled.div`
-  width: 100%;
+export const Wrap = styled.div`
+  width: 1420px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 220px 0 160px 0;
+  margin: 220px auto 160px auto;
   flex-direction: column;
 
   @media screen and (max-width: 1024px) {
-    margin: 150px 0 120px 0;
+    width: 700px;
+    margin: 150px auto 120px auto;
   }
 
   @media screen and (max-width: 760px) {
+    width: 350px;
     margin: 130px auto 100px auto;
   }
 `;
 
-const Title = styled.div`
+export const Title = styled.div`
   font-size: 37px;
   font-weight: 800;
   color: #004453;
   margin-bottom: 90px;
 
   @media screen and (max-width: 1024px) {
+    font-size: 23px;
+    margin-bottom: 46px;
+  }
+
+  @media screen and (max-width: 760px) {
     font-size: 20px;
     margin-bottom: 46px;
   }

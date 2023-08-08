@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Layout from '@/components/Layout';
+import { Wrap, Title } from './members';
 
 const History = () => {
   return (
@@ -70,35 +71,6 @@ interface Props {
   isBottom?: boolean;
   isUpText?: boolean;
 }
-
-const Wrap = styled.div`
-  width: 1420px;
-  margin: 220px auto 100px auto;
-
-  @media screen and (max-width: 1024px) {
-    width: 700px;
-    margin: 150px auto 100px auto;
-  }
-
-  @media screen and (max-width: 760px) {
-    width: 350px;
-    margin: 130px auto 100px auto;
-  }
-`;
-
-const Title = styled.div`
-  font-weight: 800;
-  font-size: 37px;
-  color: #004453;
-  margin-bottom: 30px;
-  text-align: center;
-
-  @media screen and (max-width: 1024px) {
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 15px;
-  }
-`;
 
 const MainText = styled.div`
   font-size: 50px;

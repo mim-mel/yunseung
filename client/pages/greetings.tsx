@@ -52,7 +52,7 @@ const Wrap = styled.div`
 
   @media screen and (max-width: 1024px) {
     width: 700px;
-    margin: 150px auto 100px auto;
+    margin: 150px auto 120px auto;
   }
 
   @media screen and (max-width: 760px) {
@@ -68,9 +68,9 @@ const Title = styled.div`
   margin-bottom: 30px;
 
   @media screen and (max-width: 1024px) {
-    font-size: 20px;
+    font-size: 23px;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
   }
 `;
 

@@ -820,6 +820,11 @@ const Content3Button = styled.div`
       width: 13px;
     }
   }
+
+  @media screen and (max-width: 760px) {
+    margin: 0;
+    margin-right: auto;
+  }
 `;
 
 const NameButtonWrap = styled.div`

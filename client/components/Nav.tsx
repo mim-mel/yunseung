@@ -71,34 +71,38 @@ const Nav = () => {
               <TitleArrow src='/image/nav-arrow.png' ismenuopen={IsService} />
             </Title>
             <SubTitleBox width='260px' ismenuopen={IsService}>
-              <SubTitle>
+              <SubTitle onClick={() => router.push('/service1')}>
                 <SubTitleImg src='/image/nav-service1.png' />
                 장부작성 및 세금신고
               </SubTitle>
-              <SubTitle>
+              <SubTitle onClick={() => router.push('/service2')}>
                 <SubTitleImg src='/image/nav-service2.png' />
                 양도, 상속, 증여세 신고
               </SubTitle>
-              <SubTitle>
+              <SubTitle onClick={() => router.push('/service3')}>
                 <SubTitleImg src='/image/nav-service3.png' />
                 조세불복 및 세무조사 대행
               </SubTitle>
-              <SubTitle>
+              <SubTitle onClick={() => router.push('/service4')}>
                 <SubTitleImg src='/image/nav-service4.png' />
                 경영 및 세무 컨설팅
               </SubTitle>
-              <SubTitle>
+              <SubTitle onClick={() => router.push('/service5')}>
                 <SubTitleImg src='/image/nav-service5.png' />
                 급여관리 (4대 보험 업무 대행)
               </SubTitle>
-              <SubTitle>
+              <SubTitle onClick={() => router.push('/service6')}>
                 <SubTitleImg src='/image/nav-service6.png' />
                 증명발급 서비스
               </SubTitle>
             </SubTitleBox>
           </TitleBox>
-          <Title>동물병원전문 센터</Title>
-          <Title>오시는길</Title>
+          <TitleBox>
+            <Title>동물병원전문 센터</Title>
+          </TitleBox>
+          <TitleBox>
+            <Title>오시는길</Title>
+          </TitleBox>
           <Button2>상담 신청하기</Button2>
         </TitleWrap>
         <Button>상담 신청하기</Button>
@@ -181,6 +185,7 @@ const TitleWrap = styled.div<Props>`
 
   @media screen and (max-width: 760px) {
     padding: ${props => (props.ismenuopen ? '15px 25px' : '0px')};
+    top: 61px;
   }
 `;
 
