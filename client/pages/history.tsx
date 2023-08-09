@@ -6,7 +6,7 @@ const History = () => {
   return (
     <Layout>
       <Wrap>
-        <Title>연혁</Title>
+        <Title isBottomMainText>연혁</Title>
         <MainText>
           세무법인 윤승은 지속적인 관심과 협력을 통해 여러분의 파트너로 함께
           성장하고 있습니다.
@@ -72,7 +72,7 @@ interface Props {
   isUpText?: boolean;
 }
 
-const MainText = styled.div`
+export const MainText = styled.div`
   font-size: 50px;
   line-height: 70px;
   color: #292929;
@@ -84,19 +84,20 @@ const MainText = styled.div`
   @media screen and (max-width: 1024px) {
     font-size: 30px;
     width: 533px;
-    line-height: 40px;
+    line-height: 45px;
     margin-bottom: 50px;
   }
 
   @media screen and (max-width: 760px) {
     font-size: 24px;
     width: 315px;
-    line-height: 40px;
+    line-height: 35px;
   }
 `;
 
 const Img = styled.img`
   margin-bottom: 255px;
+  border-radius: 30px;
 
   @media screen and (max-width: 1024px) {
     width: 700px;

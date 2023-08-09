@@ -82,6 +82,7 @@ interface Props {
   isBottomNone?: boolean;
   isIpadBottomNone?: boolean;
   isMobileBottomNone?: boolean;
+  isBottomMainText?: boolean;
   height?: string;
   IpadHeight?: string;
 }
@@ -105,20 +106,19 @@ export const Wrap = styled.div`
   }
 `;
 
-export const Title = styled.div`
+export const Title = styled.div<Props>`
   font-size: 37px;
   font-weight: 800;
   color: #004453;
-  margin-bottom: 90px;
+  margin-bottom: ${props => (props.isBottomMainText ? '25px' : '90px')};
 
   @media screen and (max-width: 1024px) {
     font-size: 23px;
-    margin-bottom: 46px;
+    margin-bottom: ${props => (props.isBottomMainText ? '15px' : '46px')};
   }
 
   @media screen and (max-width: 760px) {
     font-size: 20px;
-    margin-bottom: 46px;
   }
 `;
 

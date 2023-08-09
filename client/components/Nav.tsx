@@ -97,7 +97,7 @@ const Nav = () => {
               </SubTitle>
             </SubTitleBox>
           </TitleBox>
-          <TitleBox>
+          <TitleBox onClick={() => router.push('/consulting')}>
             <Title>동물병원전문 센터</Title>
           </TitleBox>
           <TitleBox>
