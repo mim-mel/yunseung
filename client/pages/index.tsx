@@ -424,16 +424,18 @@ const Box1Title = styled.h3`
 const Box1Arrow = styled.img<Props>`
   margin-left: 10px;
   position: relative;
-  top: ${props => (props.top ? '29px' : '')};
-  left: ${props => (props.left ? '105px' : '135px')};
+  top: ${props => (props.top ? '14px' : '')};
+  left: ${props => (props.left ? '-89px' : '-5px')};
 
   @media screen and (max-width: 1024px) {
     position: absolute;
+    top: ${props => (props.top ? '29px' : '4px')};
+    left: ${props => (props.left ? '105px' : '135px')};
   }
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 760px) {
     left: ${props => (props.left ? '65px' : '135px')};
-    top: ${props => (props.top ? '31px' : '')};
+    top: ${props => (props.top ? '30px' : '5px')};
     width: 16px;
   }
 `;

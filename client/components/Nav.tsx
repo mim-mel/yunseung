@@ -100,7 +100,7 @@ const Nav = () => {
           <TitleBox onClick={() => router.push('/consulting')}>
             <Title>동물병원전문 센터</Title>
           </TitleBox>
-          <TitleBox>
+          <TitleBox onClick={() => router.push('/map')}>
             <Title>오시는길</Title>
           </TitleBox>
           <Button2>상담 신청하기</Button2>
