@@ -122,6 +122,58 @@ const MapPage = () => {
           {MapNum === 2 && <MapImg ref={mapElement2} />}
           {MapNum === 3 && <MapImg ref={mapElement3} />}
         </MapBlock>
+        {MapNum === 1 && (
+          <MapNameTextBox>
+            <MapName>서울 서초 본사</MapName>
+            <MapTextBox>
+              <MapText isMarginBottom isMobileMarginBottom>
+                <span>주소</span>서울 서초구 법원로4길 31 대원빌딩 4층
+              </MapText>
+              <MapTextBox2>
+                <MapText isMarginRight isMobileMarginBottom>
+                  <span>Tel</span>02-525-6172~73
+                </MapText>
+                <MapText>
+                  <span>Fax</span>02-587-4230~1
+                </MapText>
+              </MapTextBox2>
+            </MapTextBox>
+          </MapNameTextBox>
+        )}
+
+        {MapNum === 2 && (
+          <MapNameTextBox>
+            <MapName>경기 광교 지점</MapName>
+            <MapTextBox>
+              <MapText isMarginBottom isMobileMarginBottom>
+                <span>주소</span>경기도 용인시 수지구 상현동 광교중앙로 301
+                드림타워 501호
+              </MapText>
+              <MapTextBox2>
+                <MapText isMarginRight isMobileMarginBottom>
+                  <span>Tel</span>031-234-7671
+                </MapText>
+                <MapText>
+                  <span>Fax</span>031-234-7672
+                </MapText>
+              </MapTextBox2>
+            </MapTextBox>
+          </MapNameTextBox>
+        )}
+
+        {MapNum === 3 && (
+          <MapNameTextBox>
+            <MapName>제주 지점</MapName>
+            <MapTextBox>
+              <MapText isMarginBottom>
+                <span>주소</span>제주 제주시 청사로 28 3층
+              </MapText>
+              <MapText>
+                <span>Tel</span>064-805-0093
+              </MapText>
+            </MapTextBox>
+          </MapNameTextBox>
+        )}
       </Wrap>
     </Layout>
   );
@@ -129,6 +181,9 @@ const MapPage = () => {
 
 interface Props {
   isBottom?: boolean;
+  isMarginBottom?: boolean;
+  isMarginRight?: boolean;
+  isMobileMarginBottom?: boolean;
 }
 
 const Img = styled.img`
@@ -142,7 +197,7 @@ const Img = styled.img`
 
   @media screen and (max-width: 760px) {
     width: 350px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     border-radius: 20px;
   }
 `;
@@ -150,21 +205,43 @@ const Img = styled.img`
 const MainText1 = styled.div`
   color: #292929;
   text-align: center;
-  font-size: 70px;
+  font-size: 60px;
   font-weight: 700;
   margin-bottom: 60px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
 `;
 
 const MainText2 = styled.div<Props>`
   color: #292929;
   text-align: center;
-  font-size: 40px;
+  font-size: 36px;
   font-weight: 700;
   line-height: 65px;
   margin-bottom: ${props => (props.isBottom ? '150px' : '30px')};
 
   span {
     color: #066f68;
+  }
+
+  @media screen and (max-width: 1024px) {
+    line-height: 40px;
+    font-size: 22px;
+    margin-bottom: ${props => (props.isBottom ? '70px' : '25px')};
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: ${props => (props.isBottom ? '60px' : '20px')};
   }
 `;
 
@@ -177,6 +254,19 @@ const MapNav = styled.div`
   grid-template-columns: 33.2% 33.2% 33.2%;
   overflow: hidden;
   margin-bottom: 70px;
+
+  @media screen and (max-width: 1024px) {
+    width: 416px;
+    height: 55px;
+    margin-bottom: 50px;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 350px;
+    border-radius: 15px;
+    grid-template-columns: 33.1% 33.1% 33.1%;
+    margin-bottom: 40px;
+  }
 `;
 
 const NavBox = styled.div`
@@ -199,6 +289,15 @@ const NavBox = styled.div`
     color: #066f68;
     font-weight: 700;
   }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 14px;
+    border-radius: 15px;
+  }
 `;
 
 const MapBlock = styled.div`
@@ -206,6 +305,19 @@ const MapBlock = styled.div`
   height: 750px;
   border-radius: 30px;
   background-color: #f9f9f9;
+  margin-bottom: 70px;
+
+  @media screen and (max-width: 1024px) {
+    width: 700px;
+    height: 375px;
+    margin-bottom: 50px;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 350px;
+    height: 187px;
+    margin-bottom: 40px;
+  }
 `;
 
 const MapImg = styled.div`
@@ -216,6 +328,72 @@ const MapImg = styled.div`
   left: 0;
   border-radius: 40px;
   border: none;
+`;
+
+const MapNameTextBox = styled.div`
+  display: flex;
+  margin-right: auto;
+
+  @media screen and (max-width: 760px) {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+`;
+
+const MapName = styled.div`
+  color: #292929;
+  font-size: 50px;
+  font-weight: 800;
+  margin-right: 80px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 28px;
+    margin-right: 47px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 24px;
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+`;
+
+const MapTextBox = styled.div`
+  display: block;
+`;
+
+const MapTextBox2 = styled.div`
+  display: flex;
+
+  @media screen and (max-width: 760px) {
+    flex-direction: column;
+  }
+`;
+
+const MapText = styled.div<Props>`
+  color: #4d4d4d;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: ${props => (props.isMarginBottom ? '15px' : '')};
+  margin-right: ${props => (props.isMarginRight ? '35px' : '')};
+
+  span {
+    color: #066f68;
+    margin-right: 15px;
+    font-weight: 800;
+  }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 16px;
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: ${props => (props.isMobileMarginBottom ? '15px' : '')};
+  }
 `;
 
 export default MapPage;
