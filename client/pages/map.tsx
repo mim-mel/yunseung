@@ -328,6 +328,10 @@ const MapImg = styled.div`
   left: 0;
   border-radius: 40px;
   border: none;
+
+  @media screen and (max-width: 760px) {
+    border-radius: 20px;
+  }
 `;
 
 const MapNameTextBox = styled.div`
@@ -392,7 +396,9 @@ const MapText = styled.div<Props>`
     font-size: 16px;
     text-align: center;
     margin-right: 0;
-    margin-bottom: ${props => (props.isMobileMarginBottom ? '15px' : '')};
+    margin-bottom: ${props => (props.isMobileMarginBottom ? '13px' : '')};
+    line-height: 26px;
+    width: 300px;
   }
 `;
 

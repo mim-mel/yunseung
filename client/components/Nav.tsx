@@ -103,9 +103,9 @@ const Nav = () => {
           <TitleBox onClick={() => router.push('/map')}>
             <Title>오시는길</Title>
           </TitleBox>
-          <Button2>상담 신청하기</Button2>
+          <Button2 onClick={() => router.push('/mail')}>상담 신청하기</Button2>
         </TitleWrap>
-        <Button>상담 신청하기</Button>
+        <Button onClick={() => router.push('/mail')}>상담 신청하기</Button>
         {IsMenuOpen ? (
           <ToggleMenu onClick={() => isMenuToggle()} src='image/x-mark.png' />
         ) : (
