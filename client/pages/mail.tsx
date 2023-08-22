@@ -22,10 +22,10 @@ const Mail = () => {
       if (form.current instanceof HTMLFormElement) {
         try {
           const response = await emailjs.sendForm(
-            'service_nm9pvgo',
-            'template_i53nvnq',
+            process.env.NEXT_PUBLIC_EMAIL_ID!,
+            process.env.NEXT_PUBLIC_EMAIL_TEMPLATE!,
             form.current,
-            'AXn8zy4BgPAGy--1w'
+            process.env.NEXT_PUBLIC_EMAIL_KEY!
           );
           alert('메일이 전송되었습니다.');
           console.log(response);
