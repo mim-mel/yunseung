@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import styled from '@emotion/styled';
+import { Wrap } from './members';
+import Layout from '@/components/Layout';
 
 const Mail = () => {
   const [IsChecked, setIsChecked] = useState(false);
@@ -42,133 +44,183 @@ const Mail = () => {
   };
 
   return (
-    <MailWrap>
-      <MailTitle>상담 신청하기</MailTitle>
-      <MailText>
-        고객과 함께 성장하는 파트너 세무법인 윤승입니다.
-        <br /> 궁금한 점이 있으시다면 문의해 주세요.
-      </MailText>
-      <Form ref={form} onSubmit={onSubmit}>
-        <NameInputWrap>
-          <NameInputBlock>
-            <Name>이름</Name>
-            <Input type='name' name='name' />
-          </NameInputBlock>
+    <Layout>
+      <Wrap>
+        <Title>상담 신청하기</Title>
+        <MainText>
+          고객과 함께 성장하는 파트너 세무법인 윤승입니다.
+          <br />
+          궁금한 점이 있으시다면 문의해 주세요.
+        </MainText>
+        <SubText>
+          <span>*</span>는 필수 입력 항목입니다.
+        </SubText>
+        <Form ref={form} onSubmit={onSubmit}>
+          <NameInputWrap>
+            <NameInputBlock>
+              <Name>
+                <span>*</span> 이름
+              </Name>
+              <Input
+                type='name'
+                name='name'
+                placeholder='이름을 입력해주세요.'
+              />
+            </NameInputBlock>
 
-          <NameInputBlock>
-            <Name>사업장</Name>
-            <Input type='business' name='business' />
-          </NameInputBlock>
-        </NameInputWrap>
+            <NameInputBlock>
+              <Name>
+                <span>*</span> 사업장
+              </Name>
+              <Input
+                type='business'
+                name='business'
+                placeholder='전화번호를 입력해주세요.'
+              />
+            </NameInputBlock>
+          </NameInputWrap>
 
-        <NameInputWrap>
-          <NameInputBlock>
-            <Name>연락처</Name>
-            <Input type='tel' name='tel' />
-          </NameInputBlock>
+          <NameInputWrap>
+            <NameInputBlock>
+              <Name>
+                <span>*</span> 연락처
+              </Name>
+              <Input
+                type='tel'
+                name='tel'
+                placeholder='이메일을 입력해주세요.'
+              />
+            </NameInputBlock>
 
-          <NameInputBlock>
-            <Name>이메일</Name>
-            <Input type='email' name='email' />
-          </NameInputBlock>
-        </NameInputWrap>
+            <NameInputBlock>
+              <Name>
+                <span>*</span> 이메일
+              </Name>
+              <Input
+                type='email'
+                name='email'
+                placeholder='제목을 입력해주세요.'
+              />
+            </NameInputBlock>
+          </NameInputWrap>
 
-        <TextAreaBlock>
-          <Name>문의 내용</Name>
-          <TextArea name='content' />
-        </TextAreaBlock>
+          <TextAreaBlock>
+            <Name>
+              <span>*</span> 문의 내용
+            </Name>
+            <TextArea name='content' placeholder='문의 내용을 입력해주세요.' />
+          </TextAreaBlock>
 
-        <CheckBoxBlock>
-          <CheckBox
-            type='checkbox'
-            checked={IsChecked}
-            onChange={e => CheckHandler(e.target.checked)}
-          />
-          <CheckBoxText>개인정보 제공동의</CheckBoxText>
-          <BubbleBlock>
-            <BubbleText>
-              IBS 파트너스는 고객 문의사항 접수 및 답변을 위해 아래와 같이
-              개인정보를 수집,이용합니다.
-            </BubbleText>
-            <BubbleTextSmall>목적: 고객 문의사항 접수 및 답변</BubbleTextSmall>
-            <BubbleTextSmall>
-              항목: 병원명, 성함, 연락처, 이메일
-            </BubbleTextSmall>
-            <BubbleTextSmall>보유 기간: 수집일로부터 1년</BubbleTextSmall>
-            <BubbleTextSmall>
-              서비스 이용에 필요한 최소한의 수집 및 이용에 동의하지 않을 수
-              있으나, 동의를 거부할 경우 서비스 이용에 제한이 있을 수 있습니다.
-            </BubbleTextSmall>
-          </BubbleBlock>
-        </CheckBoxBlock>
-        <Button type='submit'>제출하기</Button>
-      </Form>
-    </MailWrap>
+          <PersonalDataInfo>
+            <DataText1>개인정보 수집 및 이용 동의</DataText1>
+            <DataText2 isMarginBottom>
+              세무법인 윤승은 귀하의 개인정보를 중요시하며, 개인정보보호에 관한
+              법률을 준수하고 있습니다.
+            </DataText2>
+            <DataText2>
+              <span>개인정보 수집 항목:</span> 이름, 연락처, 이메일
+              <br />
+              <span>개인정보 수집 및 이용 목적:</span> 문의에 대한 확인 및 회신
+              <br />
+              <span>개인정보 보유 및 이용 기간:</span> 수집 및 이용 목적 달성
+              시까지 보유하며 해당 목적이 달성되면 파기됩니다.
+              <br />
+            </DataText2>
+          </PersonalDataInfo>
+          <CheckBoxBlock>
+            <CheckBox
+              type='checkbox'
+              checked={IsChecked}
+              onChange={e => CheckHandler(e.target.checked)}
+            />
+            <CheckBoxText>개인정보 수집 및 이용에 동의합니다.</CheckBoxText>
+          </CheckBoxBlock>
+          <Button>문의하기</Button>
+        </Form>
+      </Wrap>
+    </Layout>
   );
 };
 
-const MailWrap = styled.div`
-  width: 850px;
-  height: 520px;
-  border-radius: 40px;
-  margin: 0 auto 150px auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+interface Props {
+  isMarginBottom?: boolean;
+}
+
+const Title = styled.div`
+  font-size: 50px;
+  font-weight: 800;
+  color: #004453;
+  margin-bottom: 25px;
 
   @media screen and (max-width: 1024px) {
-    width: 80%;
+    font-size: 40px;
+    margin-bottom: 15px;
   }
 
   @media screen and (max-width: 760px) {
-    width: 85%;
-    height: 550px;
-    margin: 0 auto 100px auto;
-    border-radius: 25px;
+    font-size: 26px;
+  }
+`;
+
+const MainText = styled.div`
+  font-size: 32px;
+  line-height: 47px;
+  color: #292929;
+  font-weight: 700;
+  width: 860px;
+  text-align: center;
+  margin: 0 auto 90px auto;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 25px;
+    width: 533px;
+    line-height: 40px;
+    margin-bottom: 50px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 15px;
+    width: 315px;
+    line-height: 28px;
+    margin-bottom: 30px;
+  }
+`;
+
+const SubText = styled.div`
+  color: #787878;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 50px auto;
+
+  span {
+    color: #066f68;
+  }
+
+  @media screen and (max-width: 760px) {
+    margin: 0 0 0 auto;
+    position: relative;
+    top: 15px;
+    font-size: 14px;
   }
 `;
 
 const Form = styled.form`
-  width: 650px;
-  height: auto;
+  width: 1420px;
+  display: flex;
+  flex-direction: column;
 
   @media screen and (max-width: 1024px) {
-    width: 90%;
+    width: 700px;
   }
-`;
-
-const MailTitle = styled.div`
-  font-size: 32px;
-  font-weight: 700;
-  margin: 0 auto;
-  color: #053dc0;
-  margin-bottom: 20px;
 
   @media screen and (max-width: 760px) {
-    font-size: 22px;
-    margin-bottom: 10px;
-  }
-`;
-
-const MailText = styled.div`
-  font-size: 14.5px;
-  color: #898989;
-  margin-bottom: 30px;
-
-  @media screen and (max-width: 760px) {
-    font-size: 11px;
-    width: 60%;
-    text-align: center;
-    line-height: 18px;
-    margin-bottom: 10px;
+    width: 350px;
   }
 `;
 
 const NameInputWrap = styled.div`
-  width: 650px;
+  width: 100%;
+  justify-content: space-between;
   display: flex;
   margin-bottom: 30px;
 
@@ -184,21 +236,21 @@ const NameInputWrap = styled.div`
 `;
 
 const NameInputBlock = styled.div`
-  width: 50%;
+  width: 48%;
   height: 50px;
-  padding: 0 20px;
   box-sizing: border-box;
+  margin-bottom: 35px;
 
   @media screen and (max-width: 760px) {
     width: 100%;
     height: 70px;
+    margin-bottom: 25px;
   }
 `;
 
 const TextAreaBlock = styled.div`
   width: 100%;
-  height: 80px;
-  padding: 0 20px;
+  height: auto;
   box-sizing: border-box;
   margin-bottom: 35px;
 
@@ -208,160 +260,175 @@ const TextAreaBlock = styled.div`
 `;
 
 const Name = styled.div`
-  font-size: 17px;
-  color: #053dc0;
+  font-size: 18px;
+  color: #4d4d4d;
   font-weight: 700;
-  margin-bottom: 10px;
-  margin-left: 10px;
+  margin-bottom: 12px;
+  margin-left: 5px;
+
+  span {
+    color: #066f68;
+  }
 
   @media screen and (max-width: 760px) {
-    font-size: 13px;
+    font-size: 16px;
     margin-bottom: 7px;
   }
 `;
 
 const Input = styled.input`
   width: 100%;
-  border: none;
-  background-color: #f2f2f2;
-  border-radius: 30px;
-  padding: 0 20px;
+  height: 50px;
+  border: 1px solid #d3d3d3;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
   box-sizing: border-box;
-  height: 35px;
+  font-size: 16px;
+  font-weight: 500;
 
   :focus {
     outline: none;
   }
 
+  ::placeholder {
+    color: #bababa;
+  }
+
   @media screen and (max-width: 760px) {
-    height: 30px;
+    height: 43px;
+    padding: 15px;
   }
 `;
 
 const TextArea = styled.textarea`
-  width: 100%;
-  height: 70px;
-  border: none;
-  background-color: #f2f2f2;
-  border-radius: 20px;
+  border: 1px solid #d3d3d3;
+  background: #fff;
+  border-radius: 10px;
   resize: none;
   padding: 20px;
   box-sizing: border-box;
+  width: 100%;
+  height: 188px;
+  font-size: 16px;
+
+  ::placeholder {
+    color: #bababa;
+  }
 
   :focus {
     outline: none;
   }
+
+  @media screen and (max-width: 760px) {
+    height: 250px;
+    margin-bottom: 15px;
+    padding: 15px;
+  }
 `;
 
-const Button = styled.button`
-  width: 135px;
-  position: relative;
-  height: 40px;
-  left: 76%;
-  top: 3%;
-  border: none;
-  border-radius: 30px;
-  background-color: #053dc0;
-  color: white;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  transition: 0.2s;
-
-  &:hover {
-    top: 2%;
-  }
+const PersonalDataInfo = styled.div`
+  width: 1420px;
+  border-radius: 10px;
+  background: #f8f8f8;
+  padding: 40px 30px;
+  box-sizing: border-box;
 
   @media screen and (max-width: 1024px) {
-    left: 74%;
+    width: 700px;
   }
 
   @media screen and (max-width: 760px) {
-    width: 80px;
-    font-size: 13px;
-    height: 35px;
-    left: 62%;
-    margin-left: 30px;
-    margin-top: 6px;
-    border-radius: 12px;
+    width: 350px;
+    padding: 36px 20px;
   }
 `;
 
-const BubbleBlock = styled.div`
-  position: absolute;
-  width: 290px;
-  height: 120px;
-  padding: 15px;
-  background: #f4f4f4;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  left: 0px;
-  top: 40px;
-  opacity: 0;
-  transition: 0.3s;
+const DataText1 = styled.div`
+  color: #4d4d4d;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 25px;
 
-  :after {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    border-width: 0 15px 15px;
-    border-color: #f4f4f4 transparent;
-    display: block;
-    width: 0;
-    z-index: 1;
-    top: -15px;
-    left: 50px;
+  @media screen and (max-width: 760px) {
+    font-size: 16px;
+    margin-bottom: 20px;
   }
 `;
 
-const BubbleText = styled.div`
-  font-size: 12.5px;
-  color: #000000;
-  font-weight: 600;
-  margin-bottom: 10px;
-`;
+const DataText2 = styled.div<Props>`
+  color: #787878;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  margin-bottom: ${props => (props.isMarginBottom ? '25px' : '')};
+  span {
+    font-weight: 700;
+  }
 
-const BubbleTextSmall = styled.div`
-  font-size: 10px;
-  color: #636363;
+  @media screen and (max-width: 760px) {
+    font-size: 14px;
+    line-height: 26px;
+  }
 `;
 
 const CheckBoxBlock = styled.div`
-  position: absolute;
-  margin: 20px 17px;
   display: flex;
-
-  @media (hover: hover) {
-    :hover ${BubbleBlock} {
-      opacity: 1;
-    }
-  }
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  margin-top: 20px;
 
   @media screen and (max-width: 760px) {
-    margin: 25px 17px;
   }
 `;
 
 const CheckBox = styled.input`
-  width: 23px;
+  height: 25px;
+  width: 18px;
   color: #a5a5a5;
   cursor: pointer;
+
+  @media screen and (max-width: 760px) {
+    width: 15px;
+  }
+`;
+
+const CheckBoxText = styled.div`
+  color: #4d4d4d;
+  margin-left: 7px;
+  font-size: 16px;
 
   @media screen and (max-width: 760px) {
     font-size: 15px;
   }
 `;
 
-const CheckBoxText = styled.div`
+const Button = styled.button`
+  width: 158px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: #066f68;
+  color: white;
   font-size: 15px;
-  color: #8c8c8c;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: auto;
+  top: 0;
+  margin-top: 60px;
+
+  &:hover {
+    top: 2%;
+  }
+
+  @media screen and (max-width: 1024px) {
+  }
 
   @media screen and (max-width: 760px) {
-    font-size: 12px;
-    margin-top: 2px;
+    width: 100%;
+    margin-top: 50px;
+    height: 46px;
   }
 `;
 
