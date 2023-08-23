@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Footer = () => {
+  const router = useRouter();
+
   return (
     <Wrap>
       <Box>
@@ -18,15 +22,23 @@ const Footer = () => {
         </ContactWrap>
         <TitleIconBox>
           <TitleWrap>
-            <Title>윤승소개</Title>
-            <Title>업무분야</Title>
-            <Title>동물병원전문센터</Title>
-            <Title>오시는길</Title>
+            <Title onClick={() => router.push('/greetings')}>윤승소개</Title>
+            <Title onClick={() => router.push('/service1')}>업무분야</Title>
+            <Title onClick={() => router.push('/consulting')}>
+              동물병원전문센터
+            </Title>
+            <Title onClick={() => router.push('/map')}>오시는길</Title>
           </TitleWrap>
           <IconWrap>
-            <Icon1 src='/image/naver-map.png' />
+            <Link href=''>
+              <Icon1 src='/image/naver-map.png' />
+            </Link>
           </IconWrap>
-          <Icon2 src='/image/naver-map.png' />
+          <IconWrap2>
+            <Link href=''>
+              <Icon2 src='/image/naver-map.png' />
+            </Link>
+          </IconWrap2>
         </TitleIconBox>
       </Box>
     </Wrap>
@@ -167,7 +179,7 @@ const Icon1 = styled.img`
   }
 `;
 
-const Icon2 = styled.img`
+const IconWrap2 = styled.div`
   display: none;
 
   @media screen and (max-width: 760px) {
@@ -178,5 +190,7 @@ const Icon2 = styled.img`
     transform: translate(-100%, 0);
   }
 `;
+
+const Icon2 = styled.img``;
 
 export default Footer;
