@@ -1,48 +1,58 @@
 import type { NextPage } from 'next';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 import Layout from '@/components/Layout';
-import { useState } from 'react';
+import Link from 'next/link';
 
 const ServiceArray = [
   {
     src: '/image/main-service-icon1.png',
     title: '장부작성 및 세금신고',
     text: '법인사업자와 일정규모 이상의 개인사업자는 발생하는 모든 거래에 대해서 증빙서류에 근거하는 장부를 작성해야 합니다.',
+    link: '/service1',
     boolean: true,
   },
   {
     src: '/image/main-service-icon2.png',
     title: '양도 상속 증여세 신고',
     text: '사업자는 법인세, 부가가치세, 원천세 등의 신고 의무가 있으며, 일정 규모 이상의 사업자는 세무조정 계산서를 첨부하여 신고하여야 합니다.',
+    link: '/service2',
     boolean: false,
   },
   {
     src: '/image/main-service-icon3.png',
     title: '조세불복 및 세무조사 대행',
     text: '직계존비속간 증여추정, 부담부 증여, 8년 자격요건 검토 등 부동산을 양도하실 경우에는 전문가의 상담을 받으신 후 진행하여야 합니다.',
+    link: '/service3',
     boolean: false,
   },
   {
     src: '/image/main-service-icon4.png',
     title: '경영 및 세무 컨설팅',
     text: '상속 또는 증여에 의하여 무상으로 자산을 취득하는 경우, 증여 받은 날이 속하는 달의 말일부터 6개월 이내에 신고∙납부하여야 합니다.',
+    link: '/service4',
     boolean: false,
   },
   {
     src: '/image/main-service-icon5.png',
     title: '급여관리',
     text: '권리 또는 이익의 침해를 당한 자는 그 처분을 받은 날로부터 90일 이내에 이의신청, 심사청구, 심판청구를 할 수 있습니다.',
+    link: '/service5',
     boolean: false,
   },
   {
     src: '/image/main-service-icon6.png',
     title: '증명 발급 서비스',
     text: '경영전략과 파악, 내부 시스템의 문제 진단 후 대안을 제시하여 기업의 경영 효율성 증대와 실무진의 역량을 강화시켜 드립니다.',
+    link: '/service6',
     boolean: false,
   },
 ];
 
 const Main: NextPage = () => {
+  const router = useRouter();
+
   //업무 분야 active 아이템 관리 state
   const [Services, setServices] = useState(ServiceArray);
   const [Cnt, setCnt] = useState(0);
@@ -99,7 +109,7 @@ const Main: NextPage = () => {
 
         {/* 카테고리 소개 */}
         <Content1Wrap>
-          <Content1Box>
+          <Content1Box onClick={() => router.push('/greetings')}>
             <Box1TextWrap>
               <Box1Title>
                 윤승소개 바로가기
@@ -112,7 +122,7 @@ const Main: NextPage = () => {
             <Box1Icon src='/image/main-box-icon1.png' />
           </Content1Box>
 
-          <Content1Box>
+          <Content1Box onClick={() => router.push('/service1')}>
             <Box1TextWrap>
               <Box1Title>
                 업무분야 바로가기
@@ -126,7 +136,7 @@ const Main: NextPage = () => {
             <Box1Icon src='/image/main-box-icon2.png' />
           </Content1Box>
 
-          <Content1Box>
+          <Content1Box onClick={() => router.push('/consulting')}>
             <Box1TextWrap>
               <Box1Title>
                 동물병원전문센터 바로가기
@@ -150,7 +160,11 @@ const Main: NextPage = () => {
         </ContentInfo>
         <Content2Wrap>
           {Services.map((service, i) => (
-            <Content2Box key={i} istrue={service.boolean}>
+            <Content2Box
+              key={i}
+              istrue={service.boolean}
+              onClick={() => router.push(service.link)}
+            >
               <Content2Img src={service.src} istrue={service.boolean} />
               <Content2Title istrue={service.boolean}>
                 {service.title}
@@ -185,7 +199,7 @@ const Main: NextPage = () => {
 
             <NameButtonWrap>
               <Content3Name>동물병원 세무 컨설팅</Content3Name>
-              <Content3Button>
+              <Content3Button onClick={() => router.push('/consulting')}>
                 자세히 보기
                 <img src='/image/double-arrow-w.png' />
               </Content3Button>
@@ -198,10 +212,15 @@ const Main: NextPage = () => {
             </Content3IconBox>
             <NameButtonWrap>
               <Content3Name>동물병원 노무 컨설팅</Content3Name>
-              <Content3Button>
-                자세히 보기
-                <img src='/image/double-arrow-w.png' />
-              </Content3Button>
+              <Link
+                href='https://ibspartners.kr/'
+                style={{ textDecoration: 'none' }}
+              >
+                <Content3Button>
+                  자세히 보기
+                  <img src='/image/double-arrow-w.png' />
+                </Content3Button>
+              </Link>
             </NameButtonWrap>
           </Content3Box>
 
@@ -225,7 +244,9 @@ const Main: NextPage = () => {
         </ContentTitle>
         <Content4Wrap>
           <Content4Text>세무관리 더 이상 고민하실 필요 없습니다.</Content4Text>
-          <Content4Button>지금바로 상담 신청하기</Content4Button>
+          <Content4Button onClick={() => router.push('/mail')}>
+            지금바로 상담 신청하기
+          </Content4Button>
         </Content4Wrap>
       </Wrap>
     </Layout>
